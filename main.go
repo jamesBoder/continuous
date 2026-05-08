@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/bootdotdev/learn-cicd-starter/internal/database"
 
@@ -91,8 +92,7 @@ func main() {
 	srv := &http.Server{
 		Addr:              ":" + port,
 		Handler:           router,
-		ReadHeaderTimeout: 5 * 60, // 5 minutes
-
+		ReadHeaderTimeout: 5 * time.minute,
 	}
 
 	log.Printf("Starting server on port %s", strconv.Quote(port))
