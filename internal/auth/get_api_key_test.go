@@ -25,7 +25,7 @@ func TestGetAPIKey(t *testing.T) {
 		},
 		{
 			name:    "missing api key",
-			header:  "ApiKey ",
+			header:  "ApiKey",
 			want:	"",
 			wantErr: true,
 		},
@@ -60,6 +60,4 @@ func TestGetAPIKey(t *testing.T) {
 		})
 	}
 }	
-
-}
 
