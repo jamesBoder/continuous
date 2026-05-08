@@ -1,15 +1,11 @@
-
-
 package auth
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 )
 
-
-
-// create unit test for GetAPIKey. the function GetAPIKey returns a string and an error. 
+// create unit test for GetAPIKey. the function GetAPIKey returns a string and an error.
 func TestGetAPIKey(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -20,25 +16,25 @@ func TestGetAPIKey(t *testing.T) {
 		{
 			name:    "valid api key",
 			header:  "ApiKey my-secret-key",
-			want:	"my-secret-key",
+			want:    "my-secret-key",
 			wantErr: false,
 		},
 		{
 			name:    "missing api key",
 			header:  "ApiKey",
-			want:	"",
+			want:    "",
 			wantErr: true,
 		},
 		{
 			name:    "malformed header",
 			header:  "my-secret-key",
-			want:	"",
+			want:    "",
 			wantErr: true,
 		},
 		{
 			name:    "no auth header",
 			header:  "",
-			want:	"",
+			want:    "",
 			wantErr: true,
 		},
 	}
@@ -59,5 +55,4 @@ func TestGetAPIKey(t *testing.T) {
 			}
 		})
 	}
-}	
-
+}
