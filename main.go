@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-
+	"strconv"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
@@ -91,8 +91,16 @@ func main() {
 	srv := &http.Server{
 		Addr:    ":" + port,
 		Handler: router,
+		ReadHeaderTimeout: 5 * 60, // 5 minutes
+
 	}
 
-	log.Printf("Serving on port: %s\n", port)
-	log.Fatal(srv.ListenAndServe())
+	
+	log.Printf("Starting server on port %s", strconv.Quote(port))
+	if err := srv.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+	
 }
+
+
